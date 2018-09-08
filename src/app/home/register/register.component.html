@@ -11,10 +11,11 @@
     <input name="confirmPassword" [(ngModel)]="confirmPassword" type="password" matInput placeholder="Confirm Password">
   </mat-form-field>
 
-  <button (click)="submitForm(); $event.preventDefault()"
-    mat-raised-button color="primary" 
-    class="half-width">
-      Login
-  </button>
+  <div class="half-width-center">
+    <button (click)="submitForm(); $event.preventDefault()"
+      mat-raised-button color="primary">
+        Login
+    </button>
+  </div>
 
 </form>

@@ -5,7 +5,7 @@ import {
   RemoteMongoDatabase,
   RemoteMongoClient,
   UserPasswordAuthProviderClient
-} from "mongodb-stitch-browser-sdk";
+} from 'mongodb-stitch-browser-sdk';
 import * as environment from '../../../environments/environment';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class StitchService {
   private mClient: StitchAppClient;
   private db: RemoteMongoDatabase;
 
-  constructor() { 
+  constructor() {
     this.mClient = Stitch.initializeDefaultAppClient(environment.configuration.stitchAppId);
     this.db = this.mClient.getServiceClient(RemoteMongoClient.factory, 'mongodb-atlas').db(environment.configuration.dbName);
   }
@@ -29,7 +29,7 @@ export class StitchService {
     return this.mClient.auth.getProviderClient(UserPasswordAuthProviderClient.factory);
   }
 
-  getDB() {
+  getDB(): RemoteMongoDatabase {
     return this.db;
   }
 }
