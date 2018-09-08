@@ -19,7 +19,7 @@ export class RegisterComponent {
 
   submitForm() {
     if (this.password !== this.confirmPassword) {
-      console.log('mismatch');
+      alert('Password and confirmation password do not match');
       return;
     }
 
