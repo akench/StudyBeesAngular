@@ -19,7 +19,6 @@ export class ChatComponent implements OnInit {
 
   private initIo(): void {
     this.websocketService.initSocket();
-    
     this.ioConnection = this.websocketService.onEvent('addMessage')
     .subscribe((message: Message) => {
       this.messages.push(message);

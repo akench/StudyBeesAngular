@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import * as socketIo from 'socket.io-client';
 
-const SERVER_URL = 'https://server.studybeehive.com:8443';;
+const SERVER_URL = 'https://server.studybeehive.com:8443';
 
 @Injectable()
 export class WebsocketService {

@@ -13,18 +13,21 @@ import { PortalComponent } from './portal/portal.component';
 import { ConfirmationComponent } from './home/confirmation/confirmation.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SocketTestingComponent } from './socket-testing/socket-testing.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuardService] },
   { path: 'login', component: HomeComponent },
   { path: 'confirmation', component: ConfirmationComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
-  { path: 'portal', component: PortalComponent, canActivate: [AuthGuardService] }
+  { path: 'portal', component: PortalComponent, canActivate: [AuthGuardService] },
+  { path: 'testing', component: SocketTestingComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SocketTestingComponent
   ],
   imports: [
     BrowserModule,
