@@ -15,7 +15,7 @@ export class LoginComponent {
   password: string;
 
   constructor(private stitchService: StitchService,
-              private router: Router
+              private router: Router,
               private userService: UserService) { }
 
   submitForm() {
@@ -34,6 +34,9 @@ export class LoginComponent {
         this.userService.updateUser(filter, update, updateOptions);
         this.router.navigate(['dashboard']);
       })
-      .catch(err => console.error(`login failed with error: ${err}`));
+      .catch(err => {
+        console.error(`login failed with error: ${err}`);
+        alert('Username and password combination is invalid');
+      });
   }
 }
