@@ -14,7 +14,6 @@ import { MatSnackBar } from '@angular/material';
 export class ProfileComponent implements OnInit {
 
   selectedCourses: string[];
-  selectedSchool: string;
   schoolList: string[] = institutions.default.map(obj => obj.institution);
   courseList = courses.default;
 
@@ -28,6 +27,18 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getUser()
+      .then((data) => {
+        this.firstname = data['firstname'];
+        this.lastname = data['lastname'];
+        this.school = data['school'];
+        this.selectedCourses = data['courses'];
+      })
+      .catch(() => [
+        this.snackBar.open('Unable to find user profile :(', 'Ok', {
+          duration: 1000
+        })
+      ]);
   }
 
   saveProfile() {

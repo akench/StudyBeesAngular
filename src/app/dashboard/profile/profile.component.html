@@ -15,7 +15,7 @@
     <br />
   
     <mat-form-field class="full-width">
-      <mat-select placeholder="School" [(value)]="selectedSchool">
+      <mat-select placeholder="School" [(value)]="school">
         <mat-option *ngFor="let school of schoolList" [value]="school">{{school}}</mat-option>
       </mat-select>
     </mat-form-field>
