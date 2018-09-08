@@ -15,6 +15,6 @@ import { CommonModule } from '@angular/common';
     imports: [
       CommonModule
     ],
-    exports: [HomeComponent]
+    exports: [HomeComponent, ConfirmationComponent]
   })
   export class HomeModule { }

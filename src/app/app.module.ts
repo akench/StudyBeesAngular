@@ -10,10 +10,12 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './core/auth/auth-guard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PortalComponent } from './portal/portal.component';
+import { ConfirmationComponent } from './home/confirmation/confirmation.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuardService] },
   { path: 'login', component: HomeComponent },
+  { path: 'confirmation', component: ConfirmationComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
   { path: 'portal', component: PortalComponent, canActivate: [AuthGuardService] }
 ];
