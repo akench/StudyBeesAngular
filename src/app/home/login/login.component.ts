@@ -31,8 +31,11 @@ export class LoginComponent {
         const updateOptions: RemoteUpdateOptions = {
           upsert: true
         };
+
+        // user is logged in
         this.userService.updateUser(filter, update, updateOptions);
         this.router.navigate(['dashboard']);
+
       })
       .catch(err => {
         console.error(`login failed with error: ${err}`);

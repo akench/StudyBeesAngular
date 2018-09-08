@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from '../../core/websocket/websocket.service';
 import { Message } from '../../models/message';
 import { User } from '../../models/user/user';
+import { UserService } from '../../models/user/user.service';
 
 @Component({
   selector: 'app-chat',
@@ -14,7 +15,8 @@ export class ChatComponent implements OnInit {
   messages: Message[] = [];
   ioConnection: any;
 
-  constructor(private websocketService: WebsocketService) { }
+  constructor(private websocketService: WebsocketService,
+    private userService: UserService) { }
 
   ngOnInit() {
 
@@ -34,7 +36,21 @@ export class ChatComponent implements OnInit {
     });
   }
 
-  public sendMessage(message: string) {
+  public sendMessage() {
+
+    const msg: Message = this.createMessage(this.currMsg);
+    // this.messages.push(this.currMsg)
+    console.log('message:' + this.currMsg);
     this.websocketService.emit('sendMessage', this.currMsg);
+  }
+
+  private createMessage(text: String): Message {
+
+    this.userService.getUser().then((data) =>  {
+        console.log(data);
+    });
+
+    return null;
+
   }
 }

@@ -1,0 +1,14 @@
+.chat-box {
+    background-color: white;
+    width: 40%;
+}
+
+.other-msg {
+
+    background-color: #81e7f9;
+}
+
+.my-msg {
+
+    background-color: #83f981;
+}
