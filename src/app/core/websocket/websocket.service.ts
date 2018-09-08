@@ -10,8 +10,13 @@ export class WebsocketService {
 
   private socket;
 
-  constructor() { 
+  constructor() {
     this.socket = socketIo(WebsocketService.serverUrl);
+
+    this.onEvent('addMessage')
+    .subscribe((errorMsg: any) => {
+      alert(errorMsg.type + ': ' + errorMsg.msg);
+    });
   }
 
   public emit(label: string, data: any) {
