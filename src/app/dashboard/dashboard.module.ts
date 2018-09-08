@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
       CommonModule,
       MatFormFieldModule,
       MatInputModule,
-      MatSelectModule
+      MatSelectModule,
+      MatButtonModule
     ],
     exports: [DashboardComponent]
   })
