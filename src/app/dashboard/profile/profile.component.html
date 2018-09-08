@@ -1,3 +1,36 @@
-<p>
-  profile works!
-</p>
+<div class="profile">
+  <h1 class="profile-header">Profile</h1>
+
+  <form>
+    <mat-form-field class="full-width">
+      <input name="firstname" [(ngModel)]="firstname" type="text" matInput placeholder="First Name">
+    </mat-form-field>
+  
+    <br />
+  
+    <mat-form-field class="full-width">
+      <input name="lastname" [(ngModel)]="lastname" type="text" matInput placeholder="Last Name">
+    </mat-form-field>
+  
+    <br />
+  
+    <mat-form-field class="full-width">
+      <mat-select placeholder="School" [formControl]="schoolControl">
+        <mat-option *ngFor="let school of schoolList" [value]="school">{{school}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <br />
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Courses" [formControl]="coursesControl" multiple>
+        <mat-optgroup *ngFor="let subject of courseList" 
+            [label]="subject.subject" [disabled]="disabled">
+          <mat-option *ngFor="let course of subject.courses">{{course}}</mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+
+
+  </form>
+</div>
