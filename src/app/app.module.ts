@@ -12,6 +12,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PortalComponent } from './portal/portal.component';
 import { ConfirmationComponent } from './home/confirmation/confirmation.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuardService] },
   { path: 'login', component: HomeComponent },
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
     CoreModule,
     HomeModule,
     DashboardModule,
-    PortalModule
+    PortalModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
