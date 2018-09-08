@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StitchService } from '../stitch/stitch.service';
 
 @Component({
   selector: 'app-global-header',
@@ -9,14 +10,15 @@ import { Router } from '@angular/router';
 export class GlobalHeaderComponent implements OnInit {
   title = 'StudyBee'
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private stitchService: StitchService) { }
 
   ngOnInit() {
   }
 
-  goToDashboard() {
-    console.log('navigating');
-    this.router.navigate(['dashboard']);
+  logoutUser() {
+    this.stitchService.getStitchClient().auth.logout().then( () => {
+      this.router.navigate(['login']);
+    });
   }
 
 }
