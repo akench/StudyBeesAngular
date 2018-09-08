@@ -11,6 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatButtonModule } from '@angular/material/button';
       MatTabsModule,
       MatInputModule,
       MatFormFieldModule,
-      MatButtonModule
+      MatButtonModule,
+      MatSnackBarModule
     ],
     exports: [HomeComponent, ConfirmationComponent]
   })
