@@ -7,11 +7,10 @@ const SERVER_URL = 'https://server.studybeehive.com:8443';
 
 @Injectable()
 export class WebsocketService {
-  constructor() { }
 
   private socket;
 
-  public initSocket(): void {
+  constructor() { 
     this.socket = socketIo(SERVER_URL);
   }
 
