@@ -1,0 +1,9 @@
+mat-toolbar {
+    background-color: darkgray;
+}
+
+span {
+    font-size: 100%;
+    color: navy;
+    text-shadow: 2px 2px grey;
+}
