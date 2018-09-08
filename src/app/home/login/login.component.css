@@ -1,4 +1,5 @@
 form {
+    margin-top: 20px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -7,6 +8,8 @@ form {
     margin-left:  auto;
 }
 
-.half-width {
-    width: 50%;
+.half-width-center {
+    width: 10%;
+    margin-left: auto;
+    margin-right: auto;
 }
