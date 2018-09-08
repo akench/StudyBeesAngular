@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { StitchService } from '../../core/stitch/stitch.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  constructor() { }
+  email: string;
+  password: string;
+  confirmPassword: string;
 
-  ngOnInit() {
+  constructor(private stichService: StitchService) { }
+
+  submitForm() {
+    if (this.password !== this.confirmPassword) {
+      console.log('mismatch');
+    }
+
+    const emailPasswordClient = this.stichService.getAuthProviderClient();
   }
 
 }

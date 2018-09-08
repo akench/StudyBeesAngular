@@ -1,15 +1,20 @@
 <form>
   <mat-form-field>
-    <input matInput placeholder="Email Address">
+    <input name="email" [(ngModel)]="email" type="text" matInput placeholder="Email Address">
   </mat-form-field>
 
   <mat-form-field>
-    <input type="password" matInput placeholder="Password">
+    <input name="password" [(ngModel)]="password" type="password" matInput placeholder="Password">
   </mat-form-field>
 
   <mat-form-field>
-    <input type="password" matInput placeholder="Confirm Password">
+    <input name="confirmPassword" [(ngModel)]="confirmPassword" type="password" matInput placeholder="Confirm Password">
   </mat-form-field>
 
-  <button mat-raised-button color="primary" class="half-width">Login</button>
+  <button (click)="submitForm(); $event.preventDefault()"
+    mat-raised-button color="primary" 
+    class="half-width">
+      Login
+  </button>
+
 </form>

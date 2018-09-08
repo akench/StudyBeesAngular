@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 // Angular imports
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
         ConfirmationComponent
     ],
     imports: [
+      FormsModule,
       CommonModule,
       MatTabsModule,
       MatInputModule,

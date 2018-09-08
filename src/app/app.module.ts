@@ -21,6 +21,7 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
   { path: 'portal', component: PortalComponent, canActivate: [AuthGuardService] }
 ];
+
 @NgModule({
   declarations: [
     AppComponent

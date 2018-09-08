@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Stitch, StitchAppClient, RemoteMongoDatabase, RemoteMongoClient } from "mongodb-stitch-browser-sdk";
-import * as environment from '../../../environments/environment'
+import {
+  Stitch,
+  StitchAppClient,
+  RemoteMongoDatabase,
+  RemoteMongoClient,
+  UserPasswordAuthProviderClient
+} from "mongodb-stitch-browser-sdk";
+import * as environment from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +23,10 @@ export class StitchService {
 
   getStitchClient(): StitchAppClient {
     return this.mClient;
+  }
+
+  getAuthProviderClient() {
+    return this.mClient.auth.getProviderClient(UserPasswordAuthProviderClient.factory);
   }
 
   getDB() {
