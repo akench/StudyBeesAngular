@@ -25,4 +25,12 @@ export class UserService {
       onErr();
     });
   }
+
+  getUser() {
+
+    const email: String = this.stitchService.getUserEmail();
+
+    return this.stitchService.getDB().collection('user').find({ 'email': email}).first();
+  }
+
 }
