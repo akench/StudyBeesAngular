@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { StitchService } from '../../core/stitch/stitch.service';
+import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +14,8 @@ export class RegisterComponent {
   password: string;
   confirmPassword: string;
 
-  constructor(private stichService: StitchService) { }
+  constructor(private stichService: StitchService,
+    private router: Router) { }
 
   submitForm() {
     if (this.password !== this.confirmPassword) {
@@ -22,7 +25,7 @@ export class RegisterComponent {
     const emailPasswordClient = this.stichService.getAuthProviderClient();
     emailPasswordClient.registerWithEmail(this.email, this.password)
       .then(() => {
-        console.log('success');
+        this.router.navigate(['login']);
       })
       .catch(error => {
         alert(error.message);
