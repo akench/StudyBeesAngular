@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { MatInputModule } from '@angular/material';
       CommonModule,
       MatTabsModule,
       MatInputModule,
-      MatFormFieldModule
+      MatFormFieldModule,
+      MatButtonModule
     ],
     exports: [HomeComponent, ConfirmationComponent]
   })
