@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StitchService } from '../../core/stitch/stitch.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { User } from '../../models/user/user';
+import { UserService } from '../../models/user/user.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -12,8 +14,9 @@ export class ConfirmationComponent implements OnInit {
 
   isConfirmed = false;
 
-  constructor(private stichService: StitchService,
-              private router: Router) { }
+  constructor(private stitchService: StitchService,
+              private router: Router,
+              private userService: UserService) { }
 
   ngOnInit() {
     // Parse the URL query parameters
@@ -27,7 +30,7 @@ export class ConfirmationComponent implements OnInit {
     }
 
     // Confirm the user's email/password account
-    const emailPassClient = this.stichService.getAuthProviderClient();
+    const emailPassClient = this.stitchService.getAuthProviderClient();
     emailPassClient.confirmUser(token, tokenId)
       .then(() => {
         console.log('success');

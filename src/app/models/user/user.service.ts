@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StitchService } from '../../core/stitch/stitch.service';
 import { User } from './user';
+import { RemoteUpdateOptions } from 'mongodb-stitch-browser-sdk';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class UserService {
     });
   }
 
-  updateUser(filter: {}, update: {}, onSuccess?: () => void, onErr?: () => void) {
-    this.stitchService.getDB().collection('users').updateOne(filter, update).then( _ => {
+  updateUser(filter: {}, update: {}, updateOptions?: RemoteUpdateOptions, onSuccess?: () => void, onErr?: () => void) {
+    this.stitchService.getDB().collection('users').updateOne(filter, update, updateOptions).then( _ => {
       onSuccess();
     }).catch( _ => {
       onErr();

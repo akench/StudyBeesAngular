@@ -17,6 +17,8 @@ export class StitchService {
   private mClient: StitchAppClient;
   private db: RemoteMongoDatabase;
 
+  private currentEmail: string;
+
   constructor() {
     this.mClient = Stitch.initializeDefaultAppClient(environment.configuration.stitchAppId);
     this.db = this.mClient.getServiceClient(RemoteMongoClient.factory, 'mongodb-atlas').db(environment.configuration.dbName);
@@ -34,7 +36,12 @@ export class StitchService {
     return this.db;
   }
 
+  getUserEmail(): string {
+    return this.mClient.auth.user.profile.email;
+  }
+
   loginUser(email, password) {
+    this.currentEmail = email;
     const credential = new UserPasswordCredential(email, password);
     return this.mClient.auth.loginWithCredential(credential);
   }

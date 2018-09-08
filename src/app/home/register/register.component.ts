@@ -15,7 +15,7 @@ export class RegisterComponent {
   password: string;
   confirmPassword: string;
 
-  constructor(private stichService: StitchService, private userService: UserService, private router: Router) { }
+  constructor(private stichService: StitchService, private router: Router) { }
 
   submitForm() {
     if (this.password !== this.confirmPassword) {
@@ -26,11 +26,6 @@ export class RegisterComponent {
     const emailPasswordClient = this.stichService.getAuthProviderClient();
     emailPasswordClient.registerWithEmail(this.email, this.password)
       .then(() => {
-        const user: User = {
-          email: this.email,
-          isActive: false
-        };
-        this.userService.insertUser(user);
         this.router.navigate(['confirmation']);
         console.log('success');
       })
