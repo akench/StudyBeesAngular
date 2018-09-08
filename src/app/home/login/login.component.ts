@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { StitchService } from '../../core/stitch/stitch.service';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +12,11 @@ export class LoginComponent {
   email: string;
   password: string;
 
-  constructor(private loginService: LoginService,
+  constructor(private stitchService: StitchService,
               private router: Router) { }
 
   submitForm() {
-    this.loginService.loginUser(this.email, this.password)
+    this.stitchService.loginUser(this.email, this.password)
       .then(authedId => {
         console.log(`successfully logged in with id: ${authedId}`);
         this.router.navigate(['dashboard']);

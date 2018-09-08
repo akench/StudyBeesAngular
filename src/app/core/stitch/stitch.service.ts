@@ -4,6 +4,7 @@ import {
   StitchAppClient,
   RemoteMongoDatabase,
   RemoteMongoClient,
+  UserPasswordCredential,
   UserPasswordAuthProviderClient
 } from 'mongodb-stitch-browser-sdk';
 import * as environment from '../../../environments/environment';
@@ -31,6 +32,11 @@ export class StitchService {
 
   getDB(): RemoteMongoDatabase {
     return this.db;
+  }
+
+  loginUser(email, password) {
+    const credential = new UserPasswordCredential(email, password);
+    return this.mClient.auth.loginWithCredential(credential);
   }
 
 }
