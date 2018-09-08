@@ -13,7 +13,7 @@ export class AuthGuardService implements CanActivate {
     if (this.stitchService.getStitchClient().auth.isLoggedIn) {
       return true;
     };
-    this.router.navigate(['']);
+    this.router.navigate(['login']);
     return false;
   }
 }
