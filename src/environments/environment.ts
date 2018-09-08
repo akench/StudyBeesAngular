@@ -7,7 +7,8 @@ export const environment = {
 };
 
 export const configuration = {
-  stitchAppId: 'studybuddy-pimcz'
+  stitchAppId: 'studybuddy-pimcz',
+  dbName: 'studybee'
 };
 
 /*
