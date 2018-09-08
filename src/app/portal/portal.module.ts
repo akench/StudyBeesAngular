@@ -6,18 +6,22 @@ import { ChatComponent } from './chat/chat.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { PortalComponent } from './portal.component';
 import { CoreModule } from '../core/core.module';
+import { SocketTestingComponent } from './socket-testing/socket-testing.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
     PortalComponent,
     CanvasComponent,
     EditorComponent,
     ChatComponent,
-    TaskListComponent],
+    TaskListComponent,
+    SocketTestingComponent],
   exports: [PortalComponent]
 })
 export class PortalModule { }
