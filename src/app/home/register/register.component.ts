@@ -14,7 +14,7 @@ export class RegisterComponent {
   confirmPassword: string;
 
   constructor(private stichService: StitchService,
-              private router: Router) { }
+    private router: Router) { }
 
   submitForm() {
     if (this.password !== this.confirmPassword) {
