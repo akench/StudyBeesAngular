@@ -15,7 +15,7 @@
     <br />
   
     <mat-form-field class="full-width">
-      <mat-select placeholder="School" [formControl]="schoolControl">
+      <mat-select placeholder="School" [(value)]="selectedSchool">
         <mat-option *ngFor="let school of schoolList" [value]="school">{{school}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -23,17 +23,17 @@
     <br />
 
     <mat-form-field class="full-width">
-      <mat-select placeholder="Courses" [formControl]="coursesControl" multiple>
+      <mat-select placeholder="Courses" [(value)]="selectedCourses" multiple>
         <mat-optgroup *ngFor="let subject of courseList" 
             [label]="subject.subject" [disabled]="disabled">
-          <mat-option *ngFor="let course of subject.courses">{{course}}</mat-option>
+          <mat-option *ngFor="let course of subject.courses" [value]="course">{{course}}</mat-option>
         </mat-optgroup>
       </mat-select>
     </mat-form-field>
 
     <div class="half-width-center">
-      <button (click)="submitForm()" type="submit" mat-raised-button color="primary">Login</button>
+      <button (click)="saveProfile()" type="submit" mat-raised-button color="primary">Save Profile</button>
     </div>
-    
+
   </form>
 </div>
