@@ -9,7 +9,7 @@ import { UserService } from '../../models/user/user.service';
   styleUrls: ['./global-header.component.css']
 })
 export class GlobalHeaderComponent implements OnInit {
-  title = 'StudyBee'
+  title = 'StudyBee';
 
   constructor(private router: Router, private stitchService: StitchService, private userService: UserService) { }
 
