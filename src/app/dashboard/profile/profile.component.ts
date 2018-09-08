@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import * as institutions from "./institutions";
-import * as courses from "./courses";
+import * as institutions from './institutions';
+import * as courses from './courses';
+import { UserService } from '../../models/user/user.service';
+import { StitchService } from '../../core/stitch/stitch.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-profile',
@@ -10,9 +13,7 @@ import * as courses from "./courses";
 })
 export class ProfileComponent implements OnInit {
 
-  coursesControl = new FormControl();
-  schoolControl = new FormControl();
-  courseList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  selectedCourses: string[];
   schoolList: string[] = institutions.default.map(obj => obj.institution);
   courseList = courses.default;
 
@@ -20,10 +21,49 @@ export class ProfileComponent implements OnInit {
   lastname: string;
   school: string;
 
-  constructor() {
+  constructor(private userService: UserService,
+              private stitchService: StitchService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
+    this.userService.getUser()
+      .then((data) => {
+        this.firstname = data['firstname'];
+        this.lastname = data['lastname'];
+        this.school = data['school'];
+        this.selectedCourses = data['courses'];
+      })
+      .catch(() => [
+        this.snackBar.open('Unable to find user profile :(', 'Ok', {
+          duration: 1000
+        })
+      ]);
+  }
+
+  saveProfile() {
+    this.userService.updateUser(
+      {
+        email: this.stitchService.getUserEmail()
+      },
+      {
+        $set: {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          courses: this.selectedCourses,
+          school: this.selectedSchool
+        }
+      },
+      null,
+      () => {
+        this.snackBar.open('Profile saved successfully!', 'Ok', {
+          duration: 1000
+        });
+      },
+      () => {
+        this.snackBar.open('Failed to save profile, please try again.');
+      }
+    );
   }
 
 }

@@ -12,9 +12,6 @@ export default [
       "institution": "University of Alabama in Huntsville"
     },
     {
-      "institution": "Alabama State University"
-    },
-    {
       "institution": "University of Alabama System Office"
     },
     {
@@ -73,63 +70,6 @@ export default [
     },
     {
       "institution": "Huntingdon College"
-    },
-    {
-      "institution": "Heritage Christian University"
-    },
-    {
-      "institution": "J F Drake State Community and Technical College"
-    },
-    {
-      "institution": "J F Ingram State Technical College"
-    },
-    {
-      "institution": "Jacksonville State University"
-    },
-    {
-      "institution": "Jefferson Davis Community College"
-    },
-    {
-      "institution": "Jefferson State Community College"
-    },
-    {
-      "institution": "John C Calhoun State Community College"
-    },
-    {
-      "institution": "Judson College"
-    },
-    {
-      "institution": "Lawson State Community College-Birmingham Campus"
-    },
-    {
-      "institution": "University of West Alabama"
-    },
-    {
-      "institution": "Lurleen B Wallace Community College"
-    },
-    {
-      "institution": "Marion Military Institute"
-    },
-    {
-      "institution": "Miles College"
-    },
-    {
-      "institution": "University of Mobile"
-    },
-    {
-      "institution": "University of Montevallo"
-    },
-    {
-      "institution": "Northwest-Shoals Community College"
-    },
-    {
-      "institution": "University of North Alabama"
-    },
-    {
-      "institution": "Northeast Alabama Community College"
-    },
-    {
-      "institution": "Oakwood University"
     },
     {
       "institution": "Alabama Southern Community College"
@@ -8781,33 +8721,6 @@ export default [
       "institution": "Southeastern Baptist Theological Seminary"
     },
     {
-      "institution": "Surry Community College"
-    },
-    {
-      "institution": "Alamance Community College"
-    },
-    {
-      "institution": "Tri-County Community College"
-    },
-    {
-      "institution": "Vance-Granville Community College"
-    },
-    {
-      "institution": "Wake Forest University"
-    },
-    {
-      "institution": "Wake Technical Community College"
-    },
-    {
-      "institution": "Warren Wilson College"
-    },
-    {
-      "institution": "Watts School of Nursing"
-    },
-    {
-      "institution": "Wayne Community College"
-    },
-    {
       "institution": "Western Piedmont Community College"
     },
     {
@@ -14590,21 +14503,6 @@ export default [
     },
     {
       "institution": "Remington College-Fort Worth Campus"
-    },
-    {
-      "institution": "University of Cosmetology Arts & Sciences-San Antonio Jamar"
-    },
-    {
-      "institution": "School of Automotive Machinists"
-    },
-    {
-      "institution": "SW School of Business and Technical Careers-Cosmetology"
-    },
-    {
-      "institution": "SW School of Business and Technical Careers"
-    },
-    {
-      "institution": "Texas College of Cosmetology-Abilene"
     },
     {
       "institution": "Vista College-Online"
@@ -20401,27 +20299,6 @@ export default [
     },
     {
       "institution": "Brown Mackie College-Greenville"
-    },
-    {
-      "institution": "Globe University-Sioux Falls"
-    },
-    {
-      "institution": "Globe University-Eau Claire"
-    },
-    {
-      "institution": "Vanguard College of Cosmetology-Baton Rouge"
-    },
-    {
-      "institution": "Globe University-Minneapolis"
-    },
-    {
-      "institution": "San Joaquin Valley College-Hesperia"
-    },
-    {
-      "institution": "Beauty Schools of America-Homestead"
-    },
-    {
-      "institution": "ATI Career Training Center-Dallas"
     },
     {
       "institution": "South Texas Vocational Technical Institute-Brownsville"
