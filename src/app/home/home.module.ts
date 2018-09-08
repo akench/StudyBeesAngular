@@ -5,6 +5,11 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// Angular imports
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
+
 @NgModule({
     declarations: [
         HomeComponent,
@@ -13,7 +18,10 @@ import { CommonModule } from '@angular/common';
         ConfirmationComponent
     ],
     imports: [
-      CommonModule
+      CommonModule,
+      MatTabsModule,
+      MatInputModule,
+      MatFormFieldModule
     ],
     exports: [HomeComponent, ConfirmationComponent]
   })
