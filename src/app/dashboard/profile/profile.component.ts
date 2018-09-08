@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import * as institutions from "./institutions";
+import * as courses from "./courses";
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  coursesControl = new FormControl();
+  schoolControl = new FormControl();
+  courseList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  schoolList: string[] = institutions.default.map(obj => obj.institution);
+  courseList = courses.default;
+
+  firstname: string;
+  lastname: string;
+  school: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
