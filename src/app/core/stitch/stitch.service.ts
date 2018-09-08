@@ -32,4 +32,5 @@ export class StitchService {
   getDB(): RemoteMongoDatabase {
     return this.db;
   }
+
 }

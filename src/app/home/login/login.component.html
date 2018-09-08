@@ -1,13 +1,13 @@
 <form>
   <mat-form-field>
-    <input type="password" matInput placeholder="Email Address">
+    <input name="email" [(ngModel)]="email" type="text" matInput placeholder="Email Address">
   </mat-form-field>
 
   <mat-form-field>
-    <input type="password" matInput placeholder="Password">
+    <input name="password" [(ngModel)]="password" type="password" matInput placeholder="Password">
   </mat-form-field>
 
   <div class="half-width-center">
-    <button mat-raised-button color="primary">Login</button>
+    <button (click)="submitForm()" type="submit" mat-raised-button color="primary">Login</button>
   </div>
 </form>
