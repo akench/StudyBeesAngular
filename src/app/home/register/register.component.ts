@@ -20,6 +20,13 @@ export class RegisterComponent {
     }
 
     const emailPasswordClient = this.stichService.getAuthProviderClient();
+    emailPasswordClient.registerWithEmail(this.email, this.password)
+      .then(() => {
+        console.log('success');
+      })
+      .catch(error => {
+        alert(error.message);
+      });
   }
 
 }
