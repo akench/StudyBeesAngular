@@ -19,7 +19,7 @@ export class StitchService {
     return this.mClient;
   }
 
-  getDB() {
+  getDB(): RemoteMongoDatabase {
     return this.db;
   }
 }
