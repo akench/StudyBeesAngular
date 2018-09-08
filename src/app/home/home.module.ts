@@ -16,10 +16,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
-        HomeComponent,
-        LoginComponent,
-        RegisterComponent,
-        ConfirmationComponent
+      HomeComponent,
+      LoginComponent,
+      RegisterComponent,
+      ConfirmationComponent
     ],
     imports: [
       FormsModule,

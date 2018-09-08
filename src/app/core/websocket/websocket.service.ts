@@ -3,16 +3,15 @@ import { Observable } from 'rxjs';
 
 import * as socketIo from 'socket.io-client';
 
-const SERVER_URL = 'https://server.studybeehive.com:8443';
-
 @Injectable()
 export class WebsocketService {
-  constructor() { }
+
+  static serverUrl = 'https://server.studybeehive.com:8443';
 
   private socket;
 
-  public initSocket(): void {
-    this.socket = socketIo(SERVER_URL);
+  constructor() { 
+    this.socket = socketIo(WebsocketService.serverUrl);
   }
 
   public emit(label: string, data: any) {
