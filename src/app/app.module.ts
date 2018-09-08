@@ -13,7 +13,8 @@ import { PortalComponent } from './portal/portal.component';
 import { ConfirmationComponent } from './home/confirmation/confirmation.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SocketTestingComponent } from './socket-testing/socket-testing.component';
+import { SocketTestingComponent } from './portal/socket-testing/socket-testing.component';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuardService] },
@@ -26,8 +27,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SocketTestingComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
