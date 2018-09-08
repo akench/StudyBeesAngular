@@ -2,4 +2,7 @@ form {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    width: 50%;
+    margin-right:  auto;
+    margin-left:  auto;
 }
