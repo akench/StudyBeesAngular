@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     HomeModule,
     DashboardModule,
     PortalModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   bootstrap: [AppComponent]
 })
