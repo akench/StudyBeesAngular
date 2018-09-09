@@ -3,6 +3,8 @@ import { FinderService } from './services/finder.service';
 import { WebsocketService } from '../../core/websocket/websocket.service';
 import { UserService } from '../../models/user/user.service';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
+import { PartnerService } from '../../core/partner/partner.service';
 
 @Component({
   selector: 'app-finder',
@@ -19,6 +21,8 @@ export class FinderComponent implements OnInit {
   constructor(private finderService: FinderService,
               private socketService: WebsocketService,
               private userService: UserService,
+              private partnerService: PartnerService,
+              private router: Router,
               private snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -61,8 +65,10 @@ export class FinderComponent implements OnInit {
       });
   }
 
-  onConnect(data) {
-    console.log(data);
+  onConnect(connectedUser) {
+    console.log(connectedUser);
+    this.partnerService.setPartner(connectedUser);
+    this.router.navigate(['portal']);
   }
 
 }
