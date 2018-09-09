@@ -16,10 +16,10 @@ export class CanvasComponent implements AfterViewInit {
   private redoHistory: {arr: {x: number, y: number}[], settings: {color: string, width: number, lineCap: string}}[] = [];
 
   private cx: CanvasRenderingContext2D;  
-  private colors = ['black'];
+  colors = ['black'];
+  selectedColor = ['blue'];
   private width: number = 3;
   private lineCap: string = 'round';
-  private selectedColor = ['blue'];
 
   constructor(private cpService: ColorPickerService, private websocketService: WebsocketService) { }
 
@@ -104,7 +104,7 @@ export class CanvasComponent implements AfterViewInit {
     this.cx.stroke();
   }
 
-  private undo(propogate: boolean) {
+  undo(propogate: boolean) {
     if (this.history.length == 0) return;
     this.history.splice(this.history.length - 1, 1).forEach((ele) => {
       this.redoHistory.splice(0, 0, ele);
@@ -113,24 +113,24 @@ export class CanvasComponent implements AfterViewInit {
     if (propogate) this.sendData('undo');
   }
 
-  private pencil() {
+  pencil() {
     this.colors[0] = 'black';
     this.width = 3;
   }
 
-  private eraser() {
+  eraser() {
     this.colors[0] = 'white';
     this.width = 20;
   }
 
-  private redo(propogate: boolean) {
+  redo(propogate: boolean) {
     if (this.redoHistory.length == 0) return;
     this.history.push(this.redoHistory.splice(0, 1)[0]);
     this.redraw();
     if (propogate) this.sendData('redo');
   }
 
-  private clear(propogate: boolean) {
+  clear(propogate: boolean) {
     this.wipe();
     this.history = [];
     this.redoHistory = [];

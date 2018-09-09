@@ -9,7 +9,7 @@ import { UserService } from '../../models/user/user.service';
   styleUrls: ['./global-header.component.css']
 })
 export class GlobalHeaderComponent implements OnInit {
-  title = 'StudyBee';
+  title = 'StudyBees';
 
   constructor(private router: Router, private stitchService: StitchService, private userService: UserService) { }
 
@@ -30,6 +30,10 @@ export class GlobalHeaderComponent implements OnInit {
     this.stitchService.getStitchClient().auth.logout().then( () => {
       this.router.navigate(['login']);
     });
+  }
+
+  isLoggedIn(): boolean {
+    return this.stitchService.getStitchClient().auth.isLoggedIn;
   }
 
 }

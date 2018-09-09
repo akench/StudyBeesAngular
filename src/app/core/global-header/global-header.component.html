@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <span>StudyBee</span>
+  <span>{{title}}</span>
   <span class="fill-remaining-space"></span>
-  <button *ngIf="this.stitchService.getStitchClient().auth.isLoggedIn" mat-button (click)="logoutUser()">Logout</button>
+  <button *ngIf="isLoggedIn()" mat-button (click)="logoutUser()">Logout</button>
 </mat-toolbar>
