@@ -41,6 +41,13 @@ canvas {
 .option-buttons {
     margin: 10px 0;
 }
+
 .option-buttons>input {
     margin-right: 10px;
+}
+
+.download-button {
+    position: absolute; 
+    bottom: 2em; 
+    right: 2em;
 }

@@ -161,4 +161,17 @@ export class CanvasComponent implements AfterViewInit {
     if (type == 'add') data.data = this.history[this.history.length - 1];
     this.websocketService.emit('sendCanvas', data);
   }
+
+  downloadImage() {
+    const dataUrl = this.canvas.nativeElement.toDataURL('image/png');
+    const anchor = document.createElement('a');
+    anchor.setAttribute('href', dataUrl);
+    anchor.setAttribute('download', 'canvas');
+
+    anchor.style.display = 'none';
+    document.body.appendChild(anchor);
+
+    anchor.click();
+    document.body.removeChild(anchor);
+  }
 }
