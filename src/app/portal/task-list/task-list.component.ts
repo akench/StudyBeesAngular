@@ -15,11 +15,9 @@ enum TaskActionType {
 })
 export class TaskListComponent implements OnInit {
 
-  firstToggle = true;
   addingTask: string;
   tasks: Task[] = [];
 
-  
 
   constructor(private socketService: WebsocketService,
               private userService: UserService) { }
@@ -57,11 +55,9 @@ export class TaskListComponent implements OnInit {
     task = task.data;
     if (task['type'] === TaskActionType.Add) {
       this.tasks.push({ name: task['name'], completed: false });
-    } else if (!this.firstToggle && task['type'] === TaskActionType.Toggle) {
+    } else if (task['type'] === TaskActionType.Toggle) {
       const index = task['index'];
       this.tasks[index].completed = task['state'];
-    } else if (this.firstToggle) {
-      this.firstToggle = false;
     }
   }
 

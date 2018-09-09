@@ -32,6 +32,8 @@ export class ChatComponent implements OnInit {
 
   public sendMessage() {
 
+    console.log(this.currMsg);
+
     // creates a user object from database
     this.userService.getUser().then((userObj: any) =>  {
 
