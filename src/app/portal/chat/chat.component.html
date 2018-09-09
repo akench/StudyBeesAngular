@@ -21,8 +21,12 @@
 
 
   <form class="input-box">
-    <input class="send-input" type="text" [(ngModel)]="currMsg" name="msg">
-    <button type="submit" class="send-btn"(click)="sendMessage(); $event.preventDefault()">SEND</button>
+    <!-- <input class="send-input" type="text" [(ngModel)]="currMsg" name="msg"> -->
+    <!-- <button type="submit" class="send-btn"(click)="sendMessage(); $event.preventDefault()">SEND</button> -->
+    <mat-form-field>
+      <input class="send-input" color="accent" matInput name="jgf" [(ngModel)]="currMsg">
+    </mat-form-field>
+    <button type="submit" class="send-btn" mat-raised-button color="primary" (click)="sendMessage(); $event.preventDefault()">SEND</button>
   </form>
 
 </div>
