@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FinderComponent } from './finder/finder.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  @ViewChild('finder') finder: FinderComponent;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  reloadFinder() {
+    this.finder.getCourses();
   }
 
 }

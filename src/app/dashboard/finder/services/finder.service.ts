@@ -9,9 +9,6 @@ export class FinderService {
 
   constructor(private stitchService: StitchService) { }
 
-  findUser(courses: string[]) {
-  }
-
   getUserCourses(onSuccess: (courses: string[]) => void) {
     const email = this.stitchService.getUserEmail();
     if (email === undefined) {

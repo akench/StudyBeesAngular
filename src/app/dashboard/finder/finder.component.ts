@@ -26,11 +26,14 @@ export class FinderComponent implements OnInit {
               private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.getCourses();
+    this.socketService.getSocket().on('connectWithPartner', data => this.onConnect(data));
+  }
+
+  getCourses() {
     this.finderService.getUserCourses( courses => {
       this.courses = courses;
     });
-
-    this.socketService.getSocket().on('connectWithPartner', data => this.onConnect(data));
   }
 
   connectUser() {
