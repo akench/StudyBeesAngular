@@ -3,7 +3,15 @@
   <ul>
     <li *ngFor="let msg of messages">
 
-      {{ msg.from.first_name }}: {{ msg.content }}
+      <div *ngIf="msg.from.email === currentUserEmail; else templateName">
+
+        <h1 style="color: red;">{{ msg.content }}</h1>
+
+      </div>
+
+      <ng-template #templateName>
+        <h1 style="color: blue;">{{ msg.content }}</h1>
+      </ng-template>
 
     </li>
   </ul>

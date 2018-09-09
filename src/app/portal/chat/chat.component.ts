@@ -11,9 +11,12 @@ import { UserService } from '../../models/user/user.service';
 })
 export class ChatComponent implements OnInit {
 
-  currMsg: String = null;
+  currMsg: string = null;
   messages: Message[] = [];
   ioConnection: any;
+
+
+  currentUserEmail: String;
 
   constructor(private websocketService: WebsocketService,
     private userService: UserService) { }
@@ -25,6 +28,10 @@ export class ChatComponent implements OnInit {
     const myMsg: Message = {'from': myUser, 'content': 'hello wrodl!'};
 
     this.messages = [myMsg];
+
+    this.userService.getUser().then((user: any) => {
+      this.currentUserEmail = user.email;
+    });
 
     this.initIo();
   }
@@ -38,19 +45,26 @@ export class ChatComponent implements OnInit {
 
   public sendMessage() {
 
-    const msg: Message = this.createMessage(this.currMsg);
-    // this.messages.push(this.currMsg)
-    console.log('message:' + this.currMsg);
-    this.websocketService.emit('sendMessage', this.currMsg);
-  }
+    // creates a user object from database
+    this.userService.getUser().then((userObj: any) =>  {
 
-  private createMessage(text: String): Message {
+      const user: User = {'first_name': userObj.firstname,
+                          'last_name': userObj.lastname,
+                          'email': userObj.email,
+                          'school': userObj.school,
+                          'courses': userObj.courses,
+                          'isActive': true};
 
-    this.userService.getUser().then((data) =>  {
-        console.log(data);
-    });
+      const msg: Message = {'from': user, 'content': this.currMsg, 'time': 0};
+      this.messages.push(msg);
 
-    return null;
+      console.log('message:' + msg);
+
+      // send this message to the web socket so the other person can see it
+      this.websocketService.emit('sendMessage', this.currMsg);
+
+
+    }).catch(err => console.log(err));
 
   }
 }
