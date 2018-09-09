@@ -1,9 +1,10 @@
 .chat-box {
     background-color: rgba(100, 100, 100, 0.9);
-    width: 40%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+    padding: 10px 20px 5px 20px;
 }
 
 .other-msg {
@@ -30,7 +31,7 @@
 
 .input-box {
     display: flex;
-    width: 70%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
