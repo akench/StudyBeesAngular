@@ -1,6 +1,6 @@
 <div class="chat-box" style="display: flex;">
 
-  <ul>
+  <ul style="padding-left: 0">
     <div *ngFor="let msg of messages">
 
       <div *ngIf="msg.from.email === currentUserEmail; else templateName">
