@@ -35,15 +35,18 @@ export class CanvasComponent implements AfterViewInit {
     this.cx.lineCap = 'round';
     this.cx.strokeStyle = '#000';
 
-    this.websocketService.getSocket().on('addMessage', (data: any) => {
+    this.websocketService.getSocket().on('addCanvas', (data: any) => {
+      console.log(data);
+      data = data.data;
       if (data.type == 'add') this.history.push(data.data);
-      else if (data.type == 'undo') this.undo();
-      else if (data.type == 'redo') this.redo();
-      else if (data.type == 'clear') this.clear();
+      else if (data.type == 'undo') this.undo(false);
+      else if (data.type == 'redo') this.redo(false);
+      else if (data.type == 'clear') this.clear(false);
       else {
         alert('invalid type: ' + data.type);
       }
-      this.history.push(data);
+      console.log(this.history);
+      this.redraw();
     });
   }
 
@@ -93,33 +96,34 @@ export class CanvasComponent implements AfterViewInit {
 
   private draw(loc: {x: number, y: number}) {
     this.cx.beginPath();
+    this.cx.strokeStyle = this.history[this.history.length - 1].settings.color;
     if (this.prev === undefined) this.cx.moveTo(loc.x, loc.y);
     else this.cx.moveTo(this.prev.x, this.prev.y);
     this.cx.lineTo(loc.x, loc.y);
     this.cx.stroke();
   }
 
-  private undo() {
+  private undo(propogate: boolean) {
     if (this.history.length == 0) return;
     this.history.splice(this.history.length - 1, 1).forEach((ele) => {
       this.redoHistory.splice(0, 0, ele);
     });
     this.redraw();
-    this.sendData('undo');
+    if (propogate) this.sendData('undo');
   }
 
-  private redo() {
+  private redo(propogate: boolean) {
     if (this.redoHistory.length == 0) return;
     this.history.push(this.redoHistory.splice(0, 1)[0]);
     this.redraw();
-    this.sendData('redo');
+    if (propogate) this.sendData('redo');
   }
 
-  private clear() {
+  private clear(propogate: boolean) {
     this.wipe();
     this.history = [];
     this.redoHistory = [];
-    this.sendData('clear');
+    if (propogate) this.sendData('clear');
   }
   
   private wipe() {
@@ -144,6 +148,6 @@ export class CanvasComponent implements AfterViewInit {
   private sendData(type: string) {
     var data: any = {type: type};
     if (type == 'add') data.data = this.history[this.history.length - 1];
-    this.websocketService.emit('sendMessage', data);
+    this.websocketService.emit('sendCanvas', data);
   }
 }

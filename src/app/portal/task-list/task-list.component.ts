@@ -18,7 +18,10 @@ export class TaskListComponent implements OnInit {
   addingTask: string;
   tasks: Task[] = [];
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 374502ec06edd8b9d30eeff3e61bf595bd852749
   constructor(private socketService: WebsocketService,
               private userService: UserService) { }
 
