@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FinderService } from './services/finder.service';
 
 @Component({
   selector: 'app-finder',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinderComponent implements OnInit {
 
-  constructor() { }
+  selectedCourse: string;
+  placeholder = 'Select a Course';
+
+  courses: string[] = [];
+  constructor(private finderService: FinderService) { }
 
   ngOnInit() {
+    this.finderService.getUserCourses( courses => {
+      this.courses = courses;
+    });
   }
 
 }

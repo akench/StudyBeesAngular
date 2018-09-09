@@ -1,7 +1,6 @@
 
 interface Course {
     name: string;
-    knowledge_level: Confidence;
 }
 
 export interface User {

@@ -1,5 +1,13 @@
-<h1>Match Finder</h1>
-
-<p>
-  finder works!
-</p>
+<h1 style="color: black">Select a Course</h1>
+<form>
+  <mat-form-field>
+    <mat-select [(value)]="selectedCourse" [placeholder]="placeholder">
+      <mat-option *ngFor="let course of courses" [value]="course">
+        {{course}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="half-width-center">
+    <button (click)="submitForm()" type="submit" mat-raised-button color="primary">Connect</button>
+  </div>
+</form>

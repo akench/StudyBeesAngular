@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { StitchService } from '../../core/stitch/stitch.service';
-import { UserService } from '../../models/user/user.service';
-import { User } from '../../models/user/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +13,7 @@ export class RegisterComponent {
   password: string;
   confirmPassword: string;
 
-  constructor(private stichService: StitchService, private router: Router) { }
+  constructor(private stitchService: StitchService, private router: Router) { }
 
   submitForm() {
     if (this.password !== this.confirmPassword) {
@@ -23,7 +21,7 @@ export class RegisterComponent {
       return;
     }
 
-    const emailPasswordClient = this.stichService.getAuthProviderClient();
+    const emailPasswordClient = this.stitchService.getAuthProviderClient();
     emailPasswordClient.registerWithEmail(this.email, this.password)
       .then(() => {
         this.router.navigate(['confirmation']);
