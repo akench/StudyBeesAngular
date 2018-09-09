@@ -1,5 +1,13 @@
 <div *ngFor="let task of tasks; let i = index">
+<<<<<<< HEAD
   <mat-checkbox [checked]="task.completed" (click)="toggleCompleted(i)">{{ task.name }}</mat-checkbox>
+=======
+  <mat-checkbox 
+    [checked]="task.completed"
+    (click)="toggleCompleted(i)">
+      {{ task.name }}
+  </mat-checkbox>
+>>>>>>> 7534c0c814ba395d6655c8c9c2d69481d04b5960
 </div>
 
 <form>
