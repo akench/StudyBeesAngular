@@ -113,12 +113,12 @@ export class CanvasComponent implements AfterViewInit {
     if (propogate) this.sendData('undo');
   }
 
-  private pencil() {
+  pencil() {
     this.colors[0] = 'black';
     this.width = 3;
   }
 
-  private eraser() {
+  eraser() {
     this.colors[0] = 'white';
     this.width = 20;
   }
