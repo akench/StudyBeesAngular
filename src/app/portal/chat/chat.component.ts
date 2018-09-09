@@ -38,8 +38,7 @@ export class ChatComponent implements OnInit {
   }
 
   private initIo(): void {
-    this.ioConnection = this.websocketService.onEvent('addMessage')
-    .subscribe((message: Message) => {
+    this.websocketService.getSocket().on('addMessage', (message: Message) => {
       this.messages.push(message);
     });
   }
