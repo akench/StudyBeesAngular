@@ -8,14 +8,16 @@
         <input [value]="colors[i]" [style.background]="colors[i]" [(colorPicker)]="colors[i]" [cpOutputFormat]="'hex'"/>
       </div>
     </div>
-    <div id="brushes">
-      <input type="button" value="Pencil" (click)="pencil()">
-      <input type="button" value="Eraser" (click)="eraser()">
+    <div class="option-buttons">
+      <input type="button" class="mat-raised-button" value="Pencil" (click)="pencil()">
+      <input type="button" class="mat-raised-button" value="Eraser" (click)="eraser()">
     </div>
-    <div id="option-buttons">
-      <input type="button" value="Undo" (click)="undo(true)">
-      <input type="button" value="Redo" (click)="redo(true)">
-      <input type="button" value="Clear" (click)="clear(true)">
+    <div class="option-buttons">
+      <input type="button" class="mat-raised-button" value="Undo" (click)="undo(true)">
+      <input type="button" class="mat-raised-button" value="Redo" (click)="redo(true)">
+    </div>
+    <div class="options-buttons">
+      <input type="button" class="mat-raised-button" value="Clear" (click)="clear(true)">
     </div>
   </div>
 

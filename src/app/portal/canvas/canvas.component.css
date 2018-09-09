@@ -37,3 +37,10 @@ canvas {
 #cur-color {
     width: 50%;
 }
+
+.option-buttons {
+    margin: 10px 0;
+}
+.option-buttons>input {
+    margin-right: 10px;
+}
