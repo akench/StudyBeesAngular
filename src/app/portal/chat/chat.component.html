@@ -27,7 +27,10 @@
       <input class="send-input" color="accent" 
         matInput name="jgf" [(ngModel)]="currMsg" placeholder="Enter a message...">
     </mat-form-field>
-    <button type="submit" class="send-btn" mat-raised-button color="primary" (click)="sendMessage(); $event.preventDefault()">Send</button>
+    <button type="submit" class="send-btn" 
+          mat-raised-button color="primary" (click)="sendMessage(); $event.preventDefault()">
+        <mat-icon>send</mat-icon>
+    </button>
   </form>
 
 </div>

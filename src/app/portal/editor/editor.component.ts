@@ -13,6 +13,7 @@ export class EditorComponent implements OnInit {
   hasUpdated = false;
 
   syncedString: string;
+  options: any = {maxLines: 1000, printMargin: false};
 
   @ViewChild('editor') editor: AceEditorComponent;
 

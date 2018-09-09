@@ -9,6 +9,7 @@ import { CoreModule } from '../core/core.module';
 import { SocketTestingComponent } from './socket-testing/socket-testing.component';
 import { FormsModule } from '@angular/forms';
 
+import { MatIconModule, MatIcon } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -26,6 +27,7 @@ import { AceEditorModule } from 'ng2-ace-editor';
     MatButtonModule,
     MatCardModule,
     MatTabsModule,
+    MatIconModule,
     ColorPickerModule,
     AceEditorModule
   ],
