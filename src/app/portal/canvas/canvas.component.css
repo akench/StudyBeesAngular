@@ -9,7 +9,7 @@ canvas {
 }
 
 #canvas-container {
-    background: grey;
+    background: brown;
     position: relative;
     display: block;
 }
@@ -19,9 +19,9 @@ canvas {
 }
 
 #options-area {
+    margin: 20px;
     display: inline-block;
     position: absolute;
-    height: 100%;
     top: 0;
     background: brown;
 }

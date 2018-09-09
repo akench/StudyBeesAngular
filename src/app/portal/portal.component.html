@@ -1,4 +1,4 @@
-<div>
+<div class="portal-wrapper">
   <div class="communication-wrapper">
     <mat-card class="chat-card">
       <app-chat class="chat-wrapper"></app-chat>
@@ -8,8 +8,16 @@
     </mat-card>
   </div>
 
-  <div>
-    <!-- <app-canvas></app-canvas> -->
-    <!-- <app-editor></app-editor> -->
+  <div class="collab-wrapper">
+    <mat-card class="collab-wrapper-card">
+      <mat-tab-group mat-stretch-tabs color="accent" class="mat-elevation-z4">
+        <mat-tab label="Canvas" class="interaction-container">
+          <app-canvas></app-canvas>
+        </mat-tab>
+        <mat-tab label="Editor" style="height: 100%">
+          <app-editor></app-editor>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
   </div>
 </div>
