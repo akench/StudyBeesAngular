@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, Input, ElementRef, ViewChild, NgModule, HostListener } from '@angular/core';
-import { Observable, fromEvent } from 'rxjs';
+import { Component, AfterViewInit, Input, ElementRef, ViewChild, HostListener, OnInit } from '@angular/core';
+import { ColorPickerService } from 'ngx-color-picker';
 
 @Component({
   selector: 'app-canvas',
@@ -17,12 +17,20 @@ export class CanvasComponent implements AfterViewInit {
   @Input() public height = 400;
 
   private cx: CanvasRenderingContext2D;  
-  
+  private colors = ['black'];
+  private selectedColor = ['blue'];
+
+  constructor(private cpService: ColorPickerService) { }
+
+  public ngOnInit() {
+    
+  }
+
   public ngAfterViewInit() {
     // get the context
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     this.cx = canvasEl.getContext('2d');
-
+    
     // set the width and height
     // canvasEl.width = this.width;
     // canvasEl.height = this.height;
@@ -36,7 +44,8 @@ export class CanvasComponent implements AfterViewInit {
   @HostListener('document:mousedown', ['$event']) 
   private onMouseDown(e) {
     var pos = this.getPos(e);
-    if (!this.isInside(pos)) {console.log('outside'); return; }
+    if (!this.isInside(pos)) return;
+    this.cx.strokeStyle = this.colors[0];
     this.down = true;
     this.prev = pos;
     this.draw(pos);
@@ -80,39 +89,4 @@ export class CanvasComponent implements AfterViewInit {
     this.cx.lineTo(loc.x, loc.y);
     this.cx.stroke();
   }
-
-  // private captureEvents(canvasEl: HTMLCanvasElement) {
-  //   // this will capture all mousedown events from teh canvas element
-  //   fromEvent(canvasEl, 'mousedown')
-  //     .switchMap((e) => {
-  //       return Observable
-  //         // after a mouse down, we'll record all mouse moves
-  //         .fromEvent(canvasEl, 'mousemove')
-  //         // we'll stop (and unsubscribe) once the user releases the mouse
-  //         // this will trigger a 'mouseup' event    
-  //         .takeUntil(Observable.fromEvent(canvasEl, 'mouseup'))
-  //         // we'll also stop (and unsubscribe) once the mouse leaves the canvas (mouseleave event)
-  //         .takeUntil(Observable.fromEvent(canvasEl, 'mouseleave'))
-  //         // pairwise lets us get the previous value to draw a line from
-  //         // the previous point to the current point    
-  //         .pairwise()
-  //     })
-  //     .subscribe((res: [MouseEvent, MouseEvent]) => {
-  //       const rect = canvasEl.getBoundingClientRect();
-  
-  //       // previous and current position with the offset
-  //       const prevPos = {
-  //         x: res[0].clientX - rect.left,
-  //         y: res[0].clientY - rect.top
-  //       };
-  
-  //       const currentPos = {
-  //         x: res[1].clientX - rect.left,
-  //         y: res[1].clientY - rect.top
-  //       };
-      
-  //       // this method we'll implement soon to do the actual drawing
-  //       this.drawOnCanvas(prevPos, currentPos);
-  //     });
-  // }
 }

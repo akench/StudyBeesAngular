@@ -1,10 +1,10 @@
 <div class="row">
 
   <mat-card class="match-finder">
-      <app-finder ></app-finder>
+      <app-finder #finder></app-finder>
   </mat-card>
   <mat-card class="profile">
-      <app-profile ></app-profile>
+      <app-profile (profileSave)="reloadFinder()"></app-profile>
   </mat-card>
 
 </div>

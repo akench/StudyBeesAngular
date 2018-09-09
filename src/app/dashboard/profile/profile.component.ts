@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import * as institutions from './institutions';
 import * as courses from './courses';
@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
   firstname: string;
   lastname: string;
   school: string;
+
+  @Output() profileSave = new EventEmitter();
 
   constructor(private userService: UserService,
               private stitchService: StitchService,
@@ -58,6 +60,7 @@ export class ProfileComponent implements OnInit {
       },
       null,
       () => {
+        this.profileSave.emit();
         this.snackBar.open('Profile saved successfully!', 'Ok', {
           duration: 1000
         });
