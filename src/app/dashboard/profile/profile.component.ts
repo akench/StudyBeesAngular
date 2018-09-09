@@ -80,7 +80,6 @@ export class ProfileComponent implements OnInit {
         });
       },
       () => {
-        this.isActive = !this.isActive;
         this.snackBar.open('Unable to toggle setting, please refresh and try again.', 'Ok', {
           duration: 1000
         });
