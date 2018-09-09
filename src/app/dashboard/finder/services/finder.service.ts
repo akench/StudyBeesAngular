@@ -17,12 +17,11 @@ export class FinderService {
     if (email === undefined) {
       return [];
     }
+
     const db = this.stitchService.getDB();
-    let user: User;
     db.collection('users').find({email: email}).first().then( data => {
-      user = data as User;
-      const courses = user.courses === undefined ? [] : user.courses;
-      onSuccess(courses);
+      const user = data as User;
+      onSuccess(user.courses ? user.courses : []);
     });
   }
 }
