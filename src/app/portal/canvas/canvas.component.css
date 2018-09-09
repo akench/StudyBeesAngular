@@ -7,3 +7,31 @@ canvas {
     user-select:none;
     -o-user-select:none;
 }
+#canvas-container {
+    background: grey;
+    position: relative;
+}
+
+#canvas-area {
+    display: inline-block;
+}
+
+#options-area {
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    background: brown;
+}
+
+#color-option {
+    margin: 2px;
+}
+
+.choose-color {
+    margin: 5px;
+}
+
+#cur-color {
+    width: 50%;
+}

@@ -1,4 +1,18 @@
-<div>
-  <canvas #canvas width="500" height="400"></canvas>
-  <!-- <input [value]="color" [style.background]="color" [(colorPicker)]="color"/> -->
+<div id="canvas-container">
+  <div id="canvas-area">
+    <canvas #canvas width="500" height="400"></canvas>
+  </div>
+  <div id="options-area">
+    <div id="color-option" *ngFor="let color of colors; let i = index">
+      <div class="choose-color">
+        <input [value]="colors[i]" [style.background]="colors[i]" [(colorPicker)]="colors[i]" [cpOutputFormat]="'hex'"/>
+      </div>
+    </div>
+    <div id="brushes">
+      <input type="button" value="Pencil"><input type="button" value="Eraser">
+    </div>
+    <div id="option-buttons">
+      <input type="button" value="Clear">
+    </div>
+  </div>
 </div>
