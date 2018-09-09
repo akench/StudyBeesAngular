@@ -31,9 +31,7 @@ export class UserService {
   }
 
   getUser() {
-
     const email: String = this.stitchService.getUserEmail();
-
     return this.stitchService.getDB().collection('users').find({ 'email': email}).first();
   }
 

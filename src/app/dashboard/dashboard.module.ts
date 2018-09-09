@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { MatCardModule } from '@angular/material/card';
       MatButtonModule,
       MatSnackBarModule,
       MatSlideToggleModule,
-      MatCardModule
+      MatCardModule,
+      MatProgressSpinnerModule
     ],
     exports: [DashboardComponent]
   })

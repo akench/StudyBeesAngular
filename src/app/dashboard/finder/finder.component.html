@@ -8,6 +8,12 @@
     </mat-select>
   </mat-form-field>
   <div class="half-width-center">
-    <button (click)="submitForm()" type="submit" mat-raised-button color="primary">Connect</button>
+    <button (click)="connectUser()" type="submit" mat-raised-button color="primary">Connect</button>
   </div>
+
+  <mat-spinner 
+    style="margin-top: 60px; margin-left: 70px;"
+    [mode]="spinnerMode" 
+    [value]="0">
+  </mat-spinner>
 </form>
