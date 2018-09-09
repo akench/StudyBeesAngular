@@ -22,10 +22,20 @@ export class EditorComponent implements OnInit {
     this.websocketService.getSocket().on('addEditor', (data) => {
       const text = data.data;
       this.text = text;
+      this.hasUpdated = true;
+      this.syncedString = text;
     });
   }
 
   onChange(code) {
+    if (this.hasUpdated) {
+      this.hasUpdated = false;
+      return;
+    }
+    if (this.syncedString === code) {
+      this.hasUpdated = false;
+      return;
+    }
     this.websocketService.emit('sendEditor', code);
     console.log(code);
   }
