@@ -12,7 +12,9 @@
       <input type="button" value="Pencil"><input type="button" value="Eraser">
     </div>
     <div id="option-buttons">
-      <input type="button" value="Clear">
+      <input type="button" value="Undo" (click)="undo()">
+      <input type="button" value="Redo" (click)="redo()">
+      <input type="button" value="Clear" (click)="clear()">
     </div>
   </div>
 </div>

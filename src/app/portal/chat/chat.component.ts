@@ -20,13 +20,6 @@ export class ChatComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit() {
-
-    const myUser: User = {email: 'test@email.com', first_name: 'testuser', isActive: true};
-
-    const myMsg: Message = {name: 'bob', msg: 'hello world!'};
-
-    this.messages = [myMsg];
-
     this.initIo();
   }
 
@@ -42,19 +35,8 @@ export class ChatComponent implements OnInit {
     // creates a user object from database
     this.userService.getUser().then((userObj: any) =>  {
 
-      /*
-      const user: User = {'first_name': userObj.firstname,
-                          'last_name': userObj.lastname,
-                          'email': userObj.email,
-                          'school': userObj.school,
-                          'courses': userObj.courses,
-                          'isActive': true};
-                          */
-
       const msg: Message = {name: userObj.first_name, msg: this.currMsg, time: 0, isMe: true};
       this.messages.push(msg);
-
-      console.log('message:' + msg);
 
       // send this message to the web socket so the other person can see it
       this.websocketService.emit('sendMessage', this.currMsg);
