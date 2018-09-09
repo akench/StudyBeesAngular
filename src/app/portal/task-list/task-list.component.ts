@@ -31,6 +31,8 @@ export class TaskListComponent implements OnInit {
 
     const task: Task = {name: this.addingTask, completed: false};
     this.tasks.push(task);
+
+    this.addingTask = '';
   }
 
 }

@@ -16,29 +16,23 @@ export class ChatComponent implements OnInit {
   messages: Message[] = [];
   ioConnection: any;
 
-
-  currentUserEmail: String;
-
   constructor(private websocketService: WebsocketService,
     private userService: UserService) { }
 
   ngOnInit() {
 
-    const myUser: User = {'email': 'test@email.com', 'first_name': 'testuser', 'isActive': true};
+    const myUser: User = {email: 'test@email.com', first_name: 'testuser', isActive: true};
 
-    const myMsg: Message = {'from': myUser, 'content': 'hello wrodl!'};
+    const myMsg: Message = {name: 'bob', msg: 'hello world!'};
 
     this.messages = [myMsg];
-
-    this.userService.getUser().then((user: any) => {
-      this.currentUserEmail = user.email;
-    });
 
     this.initIo();
   }
 
   private initIo(): void {
     this.websocketService.getSocket().on('addMessage', (message: Message) => {
+      message['isMe'] = false;
       this.messages.push(message);
     });
   }
@@ -48,14 +42,16 @@ export class ChatComponent implements OnInit {
     // creates a user object from database
     this.userService.getUser().then((userObj: any) =>  {
 
+      /*
       const user: User = {'first_name': userObj.firstname,
                           'last_name': userObj.lastname,
                           'email': userObj.email,
                           'school': userObj.school,
                           'courses': userObj.courses,
                           'isActive': true};
+                          */
 
-      const msg: Message = {'from': user, 'content': this.currMsg, 'time': 0};
+      const msg: Message = {name: userObj.first_name, msg: this.currMsg, time: 0, isMe: true};
       this.messages.push(msg);
 
       console.log('message:' + msg);
