@@ -15,6 +15,7 @@ enum TaskActionType {
 })
 export class TaskListComponent implements OnInit {
 
+  firstToggle = true;
   addingTask: string;
   tasks: Task[] = [];
 
@@ -22,8 +23,7 @@ export class TaskListComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit() {
-    this.socketService.getSocket().on('addTask')
-      .subscribe(task => this.appendPartnerTask(task));
+    this.socketService.getSocket().on('addTask', task => this.appendPartnerTask(task));
   }
 
   toggleCompleted(i: number) {
@@ -32,7 +32,8 @@ export class TaskListComponent implements OnInit {
 
     this.socketService.emit('sendTask', {
       type: TaskActionType.Toggle,
-      index: i
+      index: i,
+      state: this.tasks[i].completed
     });
   }
 
@@ -50,12 +51,15 @@ export class TaskListComponent implements OnInit {
   }
 
   appendPartnerTask(task) {
+    console.log(task);
+    task = task.data;
     if (task['type'] === TaskActionType.Add) {
       this.tasks.push({ name: task['name'], completed: false });
-    } else if (task['type'] === TaskActionType.Toggle) {
+    } else if (!this.firstToggle && task['type'] === TaskActionType.Toggle) {
       const index = task['index'];
-      const currTask: Task  = this.tasks[index];
-      currTask.completed = !currTask.completed;
+      this.tasks[index].completed = task['state'];
+    } else if (this.firstToggle) {
+      this.firstToggle = false;
     }
   }
 
