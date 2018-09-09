@@ -1,9 +1,31 @@
 .communication-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 25vw;
+    height: 90vh;
+    margin: 10px;
 }
 
 .chat-wrapper {
-    width: 100%
+    width: 100%;
+}
+
+.chat-card {
+    height: 60%;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.list-wrapper {
+    width: 100%;
+}
+
+.list-card {
+    height: 40%;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: relative;
 }

@@ -1,9 +1,9 @@
-<div *ngFor="let task of tasks; let i = index">
-  <mat-checkbox 
-    [checked]="task.completed"
-    (change)="toggleCompleted(i)">
+<div class="tasks">
+  <div *ngFor="let task of tasks; let i = index">
+    <mat-checkbox [checked]="task.completed" (change)="toggleCompleted(i)">
       {{ task.name }}
-  </mat-checkbox>
+    </mat-checkbox>
+  </div>
 </div>
 
 <form>
@@ -11,5 +11,5 @@
     <input matInput name="taskname" [(ngModel)]="addingTask" placeholder="Add a task">
   </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="addTask()">Add</button>
+  <button class="task-button" mat-raised-button color="primary" (click)="addTask()">Add</button>
 </form>

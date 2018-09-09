@@ -1,8 +1,7 @@
 .chat-box {
+    max-height: 75%;
+    overflow: scroll;
     width: 100%;
-    margin: auto;
-    bottom: 0;
-    position: relative;
     display: flex;
     flex-direction: column;
 }
@@ -29,20 +28,19 @@
 
 .input-box {
     display: flex;
-    width: 60%;
-    margin-bottom: 10px;
-    opacity: 1.0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 .send-input {
     height: 80%;
-    margin-top: 10px;
 }
 
 .send-btn {
     margin: 10px;
     width: 30%;
-    margin-left: 10px;
-    margin-top: 25px;
     height: 40px;
 }

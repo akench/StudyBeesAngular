@@ -1,0 +1,13 @@
+.task-button {
+    margin: 10px;
+}
+
+form {
+    position: absolute;
+    bottom: 0;
+}
+
+.tasks {
+    max-height: 75%;
+    overflow: scroll;
+}
