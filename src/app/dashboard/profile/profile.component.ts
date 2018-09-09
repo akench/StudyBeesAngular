@@ -14,10 +14,10 @@ import { MatSnackBar } from '@angular/material';
 export class ProfileComponent implements OnInit {
 
   selectedCourses: string[];
-  selectedSchool: string;
   schoolList: string[] = institutions.default.map(obj => obj.institution);
   courseList = courses.default;
 
+  isActive: boolean;
   firstname: string;
   lastname: string;
   school: string;
@@ -28,6 +28,19 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getUser()
+      .then((data) => {
+        this.isActive = data['isActive'];
+        this.firstname = data['firstname'];
+        this.lastname = data['lastname'];
+        this.school = data['school'];
+        this.selectedCourses = data['courses'];
+      })
+      .catch(() => [
+        this.snackBar.open('Unable to find user profile :(', 'Ok', {
+          duration: 1000
+        })
+      ]);
   }
 
   saveProfile() {
@@ -40,7 +53,7 @@ export class ProfileComponent implements OnInit {
           firstname: this.firstname,
           lastname: this.lastname,
           courses: this.selectedCourses,
-          school: this.selectedSchool
+          school: this.school
         }
       },
       null,
@@ -51,6 +64,25 @@ export class ProfileComponent implements OnInit {
       },
       () => {
         this.snackBar.open('Failed to save profile, please try again.');
+      }
+    );
+  }
+
+  toggleActive() {
+    this.userService.updateUser(
+      { email: this.stitchService.getUserEmail() },
+      { $set: { isActive: !this.isActive } },
+      null,
+      () => {
+        this.isActive = !this.isActive;
+        this.snackBar.open('Profile saved successfully!', 'Ok', {
+          duration: 1000
+        });
+      },
+      () => {
+        this.snackBar.open('Unable to toggle setting, please refresh and try again.', 'Ok', {
+          duration: 1000
+        });
       }
     );
   }

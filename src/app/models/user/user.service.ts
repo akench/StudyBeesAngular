@@ -20,9 +20,13 @@ export class UserService {
 
   updateUser(filter: {}, update: {}, updateOptions?: RemoteUpdateOptions, onSuccess?: () => void, onErr?: () => void) {
     this.stitchService.getDB().collection('users').updateOne(filter, update, updateOptions).then( _ => {
-      onSuccess();
+      if (onSuccess !== undefined) {
+        onSuccess();
+      }
     }).catch( _ => {
-      onErr();
+      if (onErr !== undefined) {
+        onErr();
+      }
     });
   }
 
