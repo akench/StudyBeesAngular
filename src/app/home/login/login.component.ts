@@ -42,4 +42,9 @@ export class LoginComponent {
         alert('Username and password combination is invalid');
       });
   }
+
+  reset() {
+    this.email = undefined;
+    this.password = undefined;
+  }
 }

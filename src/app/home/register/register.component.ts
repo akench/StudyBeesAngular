@@ -31,4 +31,10 @@ export class RegisterComponent {
         alert(error.message);
       });
   }
+
+  reset() {
+    this.email = undefined;
+    this.password = undefined;
+    this.confirmPassword = undefined;
+  }
 }
