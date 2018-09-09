@@ -1,24 +1,26 @@
-<div class="chat-box">
+<div class="chat-box" style="display: flex;">
 
   <ul>
-    <li *ngFor="let msg of messages">
+    <div *ngFor="let msg of messages">
 
       <div *ngIf="msg.from.email === currentUserEmail; else templateName">
 
-        <h1 style="color: red;">{{ msg.content }}</h1>
+        <div class="my-msg">You: {{ msg.content }}</div>
 
       </div>
 
+
       <ng-template #templateName>
-        <h1 style="color: blue;">{{ msg.content }}</h1>
+
+        <div class="other-msg"> {{ msg.from.email }}: {{ msg.content }}</div>
+
       </ng-template>
 
-    </li>
+    </div>
   </ul>
 
 
-  <input id="inputbox" type="text" [(ngModel)]="currMsg">
-  <button (click)="sendMessage()">SEND</button>
+  <input class="input-box" type="text" [(ngModel)]="currMsg">
+  <button class="send-btn"(click)="sendMessage()">SEND</button>
 
 </div>
-

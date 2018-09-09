@@ -4,6 +4,7 @@ import { Message } from '../../models/message';
 import { User } from '../../models/user/user';
 import { UserService } from '../../models/user/user.service';
 
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
