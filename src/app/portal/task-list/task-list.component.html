@@ -2,9 +2,10 @@
   <mat-checkbox (click)="toggleCompleted(i)">{{ task.name }}</mat-checkbox>
 </div>
 
-<form >
+<form>
   <mat-form-field>
-    <input matInput placeholder="Add a task">
+    <input matInput name="taskname" [(ngModel)]="addingTask" placeholder="Add a task">
   </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="addTask()">Add</button>
 </form>
-<button mat-raised-button color="primary">Add</button>

@@ -8,6 +8,7 @@ import { Task } from '../../models/task';
 })
 export class TaskListComponent implements OnInit {
 
+  addingTask: string;
   tasks: Task[] = [];
 
   constructor() { }
@@ -22,6 +23,14 @@ export class TaskListComponent implements OnInit {
 
     this.tasks[i].completed = !this.tasks[i].completed;
     console.log(i + ' is now ' + this.tasks[i].completed);
+  }
+
+  addTask(): void {
+
+    console.log(this.addingTask);
+
+    const task: Task = {name: this.addingTask, completed: false};
+    this.tasks.push(task);
   }
 
 }
