@@ -53,25 +53,15 @@ export class TaskListComponent implements OnInit {
   }
 
   appendPartnerTask(task) {
-<<<<<<< HEAD
-
     console.log(task);
     task = task.data;
-
-=======
-    console.log(task);
-    task = task.data;
->>>>>>> 7534c0c814ba395d6655c8c9c2d69481d04b5960
     if (task['type'] === TaskActionType.Add) {
       this.tasks.push({ name: task['name'], completed: false });
     } else if (!this.firstToggle && task['type'] === TaskActionType.Toggle) {
       const index = task['index'];
       this.tasks[index].completed = task['state'];
-<<<<<<< HEAD
-=======
     } else if (this.firstToggle) {
       this.firstToggle = false;
->>>>>>> 7534c0c814ba395d6655c8c9c2d69481d04b5960
     }
   }
 
