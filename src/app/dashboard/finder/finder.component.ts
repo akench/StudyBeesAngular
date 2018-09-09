@@ -68,7 +68,7 @@ export class FinderComponent implements OnInit {
   onConnect(connectedUser) {
     console.log(connectedUser);
     this.partnerService.setPartner(connectedUser);
-    this.router.navigate(['portal']);
+    this.router.navigate(['testing']);
   }
 
 }

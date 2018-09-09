@@ -1,18 +1,18 @@
 <div class="chat-box" style="display: flex;">
 
   <ul style="padding-left: 0">
-    <div *ngFor="let msg of messages">
+    <div *ngFor="let message of messages">
 
-      <div *ngIf="msg.from.email === currentUserEmail; else templateName">
+      <div *ngIf="message.isMe; else templateName">
 
-        <div class="my-msg">You: {{ msg.content }}</div>
+        <div class="my-msg">You: {{ message.msg }}</div>
 
       </div>
 
 
       <ng-template #templateName>
 
-        <div class="other-msg"> {{ msg.from.email }}: {{ msg.content }}</div>
+        <div class="other-msg"> {{ message.name }}: {{ message.msg }}</div>
 
       </ng-template>
 
