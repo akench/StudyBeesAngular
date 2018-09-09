@@ -38,8 +38,7 @@ export class ChatComponent implements OnInit {
   }
 
   private initIo(): void {
-    this.ioConnection = this.websocketService.onEvent('addMessage')
-    .subscribe((message: Message) => {
+    this.websocketService.getSocket().on('addMessage', (message: Message) => {
       this.messages.push(message);
     });
   }
@@ -64,6 +63,8 @@ export class ChatComponent implements OnInit {
       // send this message to the web socket so the other person can see it
       this.websocketService.emit('sendMessage', this.currMsg);
 
+      // reset curr message
+      this.currMsg = '';
 
     }).catch(err => console.log(err));
 

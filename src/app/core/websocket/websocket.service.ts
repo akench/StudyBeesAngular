@@ -12,20 +12,18 @@ export class WebsocketService {
 
   constructor() {
     this.socket = socketIo(WebsocketService.serverUrl);
-
-    this.onEvent('addMessage')
-    .subscribe((errorMsg: any) => {
-      alert(errorMsg.type + ': ' + errorMsg.msg);
-    });
+    this.socket.on('err', (data) => { alert('type: ' + data.type + ', msg: ' + data.msg)});
+    // this.onEvent('err')
+    // .subscribe((errorMsg: any) => {
+    //   alert(errorMsg.type + ': ' + errorMsg.msg);
+    // });
   }
 
   public emit(label: string, data: any) {
     this.socket.emit(label, data);
   }
 
-  public onEvent(event: string): Observable<any> {
-    return new Observable<Event>(observer => {
-        this.socket.on(event, () => observer.next());
-    });
+  public getSocket(): any {
+    return this.socket;
   }
 }
