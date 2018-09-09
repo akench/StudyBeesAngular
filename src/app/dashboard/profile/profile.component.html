@@ -2,6 +2,13 @@
   <h1 class="profile-header">Profile</h1>
 
   <form>
+    <mat-slide-toggle 
+        class="active-toggle" 
+        (click)="toggleActive()"
+        [checked]="isActive">
+      <p>Make me visible to other students</p>
+    </mat-slide-toggle>
+
     <mat-form-field class="full-width">
       <input name="firstname" [(ngModel)]="firstname" type="text" matInput placeholder="First Name">
     </mat-form-field>

@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   schoolList: string[] = institutions.default.map(obj => obj.institution);
   courseList = courses.default;
 
+  isActive: boolean;
   firstname: string;
   lastname: string;
   school: string;
@@ -29,6 +30,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.userService.getUser()
       .then((data) => {
+        this.isActive = data['isActive'];
         this.firstname = data['firstname'];
         this.lastname = data['lastname'];
         this.school = data['school'];
@@ -51,7 +53,7 @@ export class ProfileComponent implements OnInit {
           firstname: this.firstname,
           lastname: this.lastname,
           courses: this.selectedCourses,
-          school: this.selectedSchool
+          school: this.school
         }
       },
       null,
@@ -62,6 +64,26 @@ export class ProfileComponent implements OnInit {
       },
       () => {
         this.snackBar.open('Failed to save profile, please try again.');
+      }
+    );
+  }
+
+  toggleActive() {
+    this.userService.updateUser(
+      { email: this.stitchService.getUserEmail() },
+      { $set: { isActive: !this.isActive } },
+      null,
+      () => {
+        this.isActive = !this.isActive;
+        this.snackBar.open('Profile saved successfully!', 'Ok', {
+          duration: 1000
+        });
+      },
+      () => {
+        this.isActive = !this.isActive;
+        this.snackBar.open('Unable to toggle setting, please refresh and try again.', 'Ok', {
+          duration: 1000
+        });
       }
     );
   }

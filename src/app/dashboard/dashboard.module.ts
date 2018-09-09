@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       MatInputModule,
       MatSelectModule,
       MatButtonModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatSlideToggleModule
     ],
     exports: [DashboardComponent]
   })
