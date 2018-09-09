@@ -1,6 +1,6 @@
 <div style="position: relative;">
     <div #editor id="editor" ace-editor
-        [text]="text"
+        [(text)]="text"
         [options]="options"
         [readOnly]="false"
         [autoUpdateContent]="true"
@@ -10,5 +10,8 @@
         (textChanged)="onChange($event)">
     </div>
 
-    <button mat-raised-button color="accent" style="position: absolute; bottom: 2em; right: 2em;">Download</button>
+    <button mat-raised-button color="secondary"
+            (click)="downloadText()">
+        Download
+    </button>
 </div> 

@@ -7,3 +7,7 @@
 #editor {
     font-family:monospace
 }
+
+button {
+    position: absolute; bottom: 2em; right: 2em;
+}

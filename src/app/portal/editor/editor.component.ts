@@ -41,4 +41,18 @@ export class EditorComponent implements OnInit {
     console.log(code);
   }
 
+  downloadText() {
+    const anchor = document.createElement('a');
+    const encodedText = encodeURIComponent(this.text);
+
+    anchor.setAttribute('href', `data:text/plain;charset=utf-8,${encodedText}`);
+    anchor.setAttribute('download', 'filename');
+
+    anchor.style.display = 'none';
+    document.body.appendChild(anchor);
+
+    anchor.click();
+    document.body.removeChild(anchor);
+  }
+
 }
