@@ -9,11 +9,14 @@ import { CoreModule } from '../core/core.module';
 import { SocketTestingComponent } from './socket-testing/socket-testing.component';
 import { FormsModule } from '@angular/forms';
 
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatInputModule
   ],
   declarations: [
     PortalComponent,
