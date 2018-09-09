@@ -12,8 +12,8 @@ export class LoginGuardService implements CanActivate {
   canActivate(): boolean {
     if (this.stitchService.getStitchClient().auth.isLoggedIn) {
       this.router.navigate(['dashboard']);
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
 }
