@@ -1,10 +1,10 @@
 .chat-box {
-    background-color: rgba(100, 100, 100, 0.9);
     width: 100%;
+    margin: auto;
+    bottom: 0;
+    position: relative;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
-    padding: 10px 20px 5px 20px;
 }
 
 .other-msg {
@@ -14,7 +14,6 @@
     text-align: left;
     background-color: #81e7f9;
     align-self: flex-start;
-
     width: 60%;
 }
 
@@ -25,15 +24,12 @@
     text-align: right;
     background-color: #83f981;
     align-self: flex-end;
-
     margin-left: 40%;
 }
 
 .input-box {
     display: flex;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 60%;
     margin-bottom: 10px;
     opacity: 1.0;
 }
@@ -45,10 +41,8 @@
 
 .send-btn {
     margin: 10px;
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 30%;
     margin-left: 10px;
     margin-top: 25px;
-    height: 30px;
+    height: 40px;
 }

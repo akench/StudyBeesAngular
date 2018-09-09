@@ -9,7 +9,8 @@
       </div>
     </div>
     <div id="brushes">
-      <input type="button" value="Pencil"><input type="button" value="Eraser">
+      <input type="button" value="Pencil" (click)="pencil()">
+      <input type="button" value="Eraser" (click)="eraser()">
     </div>
     <div id="option-buttons">
       <input type="button" value="Undo" (click)="undo(true)">
