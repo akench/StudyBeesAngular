@@ -37,3 +37,9 @@ canvas {
 #cur-color {
     width: 50%;
 }
+
+.download-button {
+    position: absolute; 
+    bottom: 2em; 
+    right: 2em;
+}
