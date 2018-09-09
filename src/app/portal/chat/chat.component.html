@@ -5,14 +5,14 @@
 
       <div *ngIf="message.isMe; else templateName">
 
-        <div class="my-msg">You: {{ message.msg }}</div>
+        <div class="my-msg"><strong>You:</strong> {{ message.msg }}</div>
 
       </div>
 
 
       <ng-template #templateName>
 
-        <div class="other-msg"> {{ message.name }}: {{ message.msg }}</div>
+        <div class="other-msg"><strong>{{ message.name }}:</strong> {{ message.msg }}</div>
 
       </ng-template>
 
@@ -20,7 +20,13 @@
   </ul>
 
 
-  <input class="input-box" type="text" [(ngModel)]="currMsg">
-  <button class="send-btn"(click)="sendMessage()">SEND</button>
+  <form class="input-box">
+    <!-- <input class="send-input" type="text" [(ngModel)]="currMsg" name="msg"> -->
+    <!-- <button type="submit" class="send-btn"(click)="sendMessage(); $event.preventDefault()">SEND</button> -->
+    <mat-form-field>
+      <input class="send-input" color="accent" matInput name="jgf" [(ngModel)]="currMsg">
+    </mat-form-field>
+    <button type="submit" class="send-btn" mat-raised-button color="primary" (click)="sendMessage(); $event.preventDefault()">SEND</button>
+  </form>
 
 </div>
