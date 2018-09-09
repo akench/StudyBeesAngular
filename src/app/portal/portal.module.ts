@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { AceEditorModule } from 'ng2-ace-editor';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    ColorPickerModule
+    ColorPickerModule,
+    AceEditorModule
   ],
   declarations: [
     PortalComponent,
