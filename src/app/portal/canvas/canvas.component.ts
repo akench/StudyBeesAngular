@@ -18,6 +18,8 @@ export class CanvasComponent implements AfterViewInit {
   private cx: CanvasRenderingContext2D;  
   colors = ['black'];
   selectedColor = ['blue'];
+  private width: number = 3;
+  private lineCap: string = 'round';
 
   constructor(private cpService: ColorPickerService, private websocketService: WebsocketService) { }
 
@@ -31,9 +33,6 @@ export class CanvasComponent implements AfterViewInit {
     // canvasEl.height = this.height;
 
     // set some default properties about the line
-    this.cx.lineWidth = 3;
-    this.cx.lineCap = 'round';
-    this.cx.strokeStyle = '#000';
 
     this.websocketService.getSocket().on('addCanvas', (data: any) => {
       console.log(data);
@@ -55,11 +54,11 @@ export class CanvasComponent implements AfterViewInit {
     var pos = this.getPos(e);
     if (!this.isInside(pos)) return;
     this.cx.strokeStyle = this.colors[0];
-    this.history.push({arr: [pos], settings: {color: this.colors[0], width: 3, lineCap: 'round'}});
+    this.history.push({arr: [pos], settings: {color: this.colors[0], width: this.width, lineCap: this.lineCap}});
     if (this.redoHistory.length != 0) this.redoHistory = [];
     this.down = true;
     this.prev = pos;
-    this.draw(pos);
+    this.draw(pos, this.history[this.history.length - 1].settings);
   }
   
   @HostListener('document:mouseup', ['$event']) 
@@ -68,7 +67,7 @@ export class CanvasComponent implements AfterViewInit {
     this.down = false;
     var pos = this.getPos(e);
     var arr = this.history[this.history.length - 1].arr.push(pos);
-    this.draw(pos);
+    this.draw(pos, this.history[this.history.length - 1].settings);
     this.sendData('add');
   }
   
@@ -77,7 +76,7 @@ export class CanvasComponent implements AfterViewInit {
     if (!this.down) return;
     var pos = this.getPos(e);
     var arr = this.history[this.history.length - 1].arr.push(pos);
-    this.draw(pos);
+    this.draw(pos, this.history[this.history.length - 1].settings);
     this.prev = pos;
     // if (this.isInside(pos)) return;
     // this.prev = undefined;
@@ -94,9 +93,11 @@ export class CanvasComponent implements AfterViewInit {
     return loc.x > 0 && loc.y > 0 && loc.x < canvasEl.width && loc.y < canvasEl.height;
   }
 
-  private draw(loc: {x: number, y: number}) {
+  private draw(loc: {x: number, y: number}, settings: {color: string, width: number, lineCap: string}) {
     this.cx.beginPath();
-    this.cx.strokeStyle = this.history[this.history.length - 1].settings.color;
+    this.cx.strokeStyle = settings.color;
+    this.cx.lineWidth = settings.width;
+    this.cx.lineCap = settings.lineCap;
     if (this.prev === undefined) this.cx.moveTo(loc.x, loc.y);
     else this.cx.moveTo(this.prev.x, this.prev.y);
     this.cx.lineTo(loc.x, loc.y);
@@ -110,6 +111,16 @@ export class CanvasComponent implements AfterViewInit {
     });
     this.redraw();
     if (propogate) this.sendData('undo');
+  }
+
+  private pencil() {
+    this.colors[0] = 'black';
+    this.width = 3;
+  }
+
+  private eraser() {
+    this.colors[0] = 'white';
+    this.width = 20;
   }
 
   redo(propogate: boolean) {
@@ -139,7 +150,7 @@ export class CanvasComponent implements AfterViewInit {
       this.prev = undefined;
       ele.arr.forEach((e) => {
         var pos = e;
-        this.draw(pos);
+        this.draw(pos, ele.settings);
         this.prev = pos;
       });
     });
