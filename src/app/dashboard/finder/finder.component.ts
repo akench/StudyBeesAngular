@@ -26,7 +26,7 @@ export class FinderComponent implements OnInit {
       this.courses = courses;
     });
 
-    this.socketService.getSocket().on('connect', data => this.onConnect(data));
+    this.socketService.getSocket().on('connectWithPartner', data => this.onConnect(data));
   }
 
   connectUser() {

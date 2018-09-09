@@ -1,9 +1,10 @@
-<p>
-  task-list works!
-</p>
-
 <div *ngFor="let task of tasks; let i = index">
-  {{i + 1}}: {{task.name}}
-  <input type="checkbox" [(ngModel)]="task.completed" (click)="toggleCompleted(i)">
-
+  <mat-checkbox (click)="toggleCompleted(i)">{{ task.name }}</mat-checkbox>
 </div>
+
+<form >
+  <mat-form-field>
+    <input matInput placeholder="Add a task">
+  </mat-form-field>
+</form>
+<button mat-raised-button color="primary">Add</button>

@@ -21,7 +21,7 @@ export class TaskListComponent implements OnInit {
   toggleCompleted(i: number) {
 
     this.tasks[i].completed = !this.tasks[i].completed;
-    console.log(i + ' was clicked');
+    console.log(i + ' is now ' + this.tasks[i].completed);
   }
 
 }

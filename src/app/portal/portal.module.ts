@@ -10,13 +10,17 @@ import { SocketTestingComponent } from './socket-testing/socket-testing.componen
 import { FormsModule } from '@angular/forms';
 
 import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule
   ],
   declarations: [
     PortalComponent,
