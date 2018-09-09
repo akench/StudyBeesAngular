@@ -1,5 +1,2 @@
-<div id="editor">int x = 2;</div>
-<script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var editor = ace.edit("editor");
-</script>
+<div #editor id="editor" ace-editor
+[(text)]="text" (textChanged)="onChange($event)"></div>
